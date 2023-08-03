@@ -1,11 +1,20 @@
+"use client";
 import Image from 'next/image'
 import styles from './page.module.css'
 import { Button } from '@mui/material'
-
+import { useAppSelector } from '@/redux/hooks';
+import { increment, incrementByAmount } from '@/redux/pageSlice';
+import { useDispatch } from 'react-redux';
+import { AppDispatch } from '@/redux/store';
 export default function Home() {
+
+const count = useAppSelector((state) => state.countReducer.value)
+const dispatch =useDispatch<AppDispatch>();
   return (
     <main className={styles.main}>
-      <Button variant="contained">Text</Button>
+      <Button variant="contained" onClick={()=>dispatch(increment())}>+</Button>
+      <Button variant="contained" onClick={()=>dispatch(incrementByAmount(4))}>add 4</Button>
+      <Button variant="contained">{count}</Button>
       <div className={styles.description}>
         <p>
           Get started by editing&nbsp;

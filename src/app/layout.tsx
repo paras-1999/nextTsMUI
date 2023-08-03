@@ -1,3 +1,4 @@
+import { ReduxProvider } from "@/redux/provider";
 import ThemeRegistry from "../../theme/ThemeRegistry";
 import "./globals.css";
 import { Inter } from "next/font/google";
@@ -17,7 +18,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <ThemeRegistry>
-        <body className={inter.className}>{children}</body>
+        <body className={inter.className}><ReduxProvider>{children}</ReduxProvider></body>
       </ThemeRegistry>
     </html>
   );
